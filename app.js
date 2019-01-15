@@ -79,7 +79,7 @@ app.get("/pokedex", (req, res) => {
 //Search Pokemon by Name and Type
 
 app.get("/pokedex/search", (req, res) => {
-  const queryName = req.query.name || ""; // if queryName haven't value , default value is "" 
+  const queryName = req.query.name || ""; // if queryName haven't value , default value is ""
   const queryType = req.query.type || ""; // if .includes have "" value , default value will be "true"
 
   const findPokedex = pokedex.data.filter(pokemon => {
@@ -95,26 +95,38 @@ app.get("/pokedex/search", (req, res) => {
   });
 });
 
-app.post("/pokedex",(req,res)=>{
-    const newPokemon = {
-        id : pokedex.nextId,
-        name: req.body.name,
-        type: req.body.type
-    }
+app.post("/pokedex", (req, res) => {
+  const newPokemon = {
+    id: pokedex.nextId,
+    name: req.body.name,
+    type: req.body.type
+  };
 
-    const newPokemons = {
-        nextId : pokedex.nextId + 1,
-        data : pokedex.data.concat(newPokemon)
-    }
+  const newPokemons = {
+    nextId: pokedex.nextId + 1,
+    data: pokedex.data.concat(newPokemon)
+  };
 
-    pokedex = newPokemons
+  pokedex = newPokemons;
 
-    res.send({
-        newData : newPokemon,
-        data : pokedex
-    })
-})
+  res.send({
+    newData: newPokemon,
+    data: pokedex
+  });
+});
 
+app.delete("/pokedex/:id", (req, res) => {
+  const deletePokemon = pokedex.data.filter(
+    item => item.id !== Number(req.params.id)
+  );
 
+  console.log(deletePokemon);
+
+  pokedex.data = deletePokemon;
+
+  res.send({
+    data: pokedex
+  });
+});
 
 app.listen(port, () => console.log("Server running at localhost:3000"));
