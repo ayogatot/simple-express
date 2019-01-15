@@ -76,7 +76,7 @@ app.get("/pokedex", (req, res) => {
   });
 });
 
-//
+// Search Pokemon by id
 
 app.get("/pokedex/:id", (req,res)=>{
 const queryId = req.params.id
@@ -86,7 +86,8 @@ const findPokemon = pokedex.data.filter(pokemon => {
 })
 
 res.send({data:findPokemon})
-}
+})
+
 // Search Pokemon by Name and Type
 
 app.get("/pokedex/search", (req, res) => {
@@ -128,6 +129,20 @@ app.post("/pokedex", (req, res) => {
   });
 });
 
+
+// Delete all pokemon
+
+// app.delete("/pokedex",(req , res)=>{
+//   const deletePokemon = pokedex.data.slice(0, pokedex.data.length);
+//   console.log(deletePokemon);
+  
+//   pokedex.data = deletePokemon;
+
+//   res.send({
+//     data : pokedex.data
+//   })
+// })
+
 // Delete pokemon by id
 
 app.delete("/pokedex/:id", (req, res) => {
@@ -140,24 +155,22 @@ app.delete("/pokedex/:id", (req, res) => {
   pokedex.data = deletePokemon;
 
   res.send({
-    data: pokedex
+    data: pokedex.data
   });
 });
 
-app.put("/pokedex/:id", (req, res) => {
+// app.put("/pokedex/", (req, res) => {
 
-  const updatePokemon = {
-      id:req.params.id,
-      name:req.body.name,
-      type:req.body.type
-  }
-
-  const updatePokemons = pokedex.data.filter(
-    item => item.id === Number(req.params.id)
-  );
+//   pokedex.data[req.params.id] = {
+//     id: req.params.id,
+//     name: req.body.name,
+//     type: req.body.type
+//   }
    
+//   res.send({
+//     data : pokedex.data
+//   })
 
-
-});
+// });
 
 app.listen(port, () => console.log("Server running at localhost:3000"));
