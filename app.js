@@ -159,18 +159,20 @@ app.delete("/pokedex/:id", (req, res) => {
   });
 });
 
-// app.put("/pokedex/", (req, res) => {
+// Update data pokemon by Id
 
-//   pokedex.data[req.params.id] = {
-//     id: req.params.id,
-//     name: req.body.name,
-//     type: req.body.type
-//   }
+app.put("/pokedex/:id", (req, res) => {
+
+  pokedex.data[req.params.id - 1] = {
+    id: req.params.id,
+    name: req.body.name,
+    type: req.body.type
+  }
    
-//   res.send({
-//     data : pokedex.data
-//   })
+  res.send({
+    data : pokedex.data
+  })
 
-// });
+});
 
 app.listen(port, () => console.log("Server running at localhost:3000"));
