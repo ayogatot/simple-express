@@ -67,7 +67,7 @@ app.get("/", (req, res) => {
   });
 });
 
-//Get All Pokemon Name
+// Get All Pokemon Name
 
 app.get("/pokedex", (req, res) => {
   res.send({
@@ -76,7 +76,18 @@ app.get("/pokedex", (req, res) => {
   });
 });
 
-//Search Pokemon by Name and Type
+//
+
+app.get("/pokedex/:id", (req,res)=>{
+const queryId = req.params.id
+
+const findPokemon = pokedex.data.filter(pokemon => {
+  return pokemon.id === Number(queryId)
+})
+
+res.send({data:findPokemon})
+}
+// Search Pokemon by Name and Type
 
 app.get("/pokedex/search", (req, res) => {
   const queryName = req.query.name || ""; // if queryName haven't value , default value is ""
@@ -94,6 +105,8 @@ app.get("/pokedex/search", (req, res) => {
     data: findPokedex
   });
 });
+
+// Add New Pokemon
 
 app.post("/pokedex", (req, res) => {
   const newPokemon = {
@@ -115,6 +128,8 @@ app.post("/pokedex", (req, res) => {
   });
 });
 
+// Delete pokemon by id
+
 app.delete("/pokedex/:id", (req, res) => {
   const deletePokemon = pokedex.data.filter(
     item => item.id !== Number(req.params.id)
@@ -127,6 +142,22 @@ app.delete("/pokedex/:id", (req, res) => {
   res.send({
     data: pokedex
   });
+});
+
+app.put("/pokedex/:id", (req, res) => {
+
+  const updatePokemon = {
+      id:req.params.id,
+      name:req.body.name,
+      type:req.body.type
+  }
+
+  const updatePokemons = pokedex.data.filter(
+    item => item.id === Number(req.params.id)
+  );
+   
+
+
 });
 
 app.listen(port, () => console.log("Server running at localhost:3000"));
