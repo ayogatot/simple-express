@@ -95,4 +95,26 @@ app.get("/pokedex/search", (req, res) => {
   });
 });
 
+app.post("/pokedex",(req,res)=>{
+    const newPokemon = {
+        id : pokedex.nextId,
+        name: req.body.name,
+        type: req.body.type
+    }
+
+    const newPokemons = {
+        nextId : pokedex.nextId + 1,
+        data : pokedex.data.concat(newPokemon)
+    }
+
+    pokedex = newPokemons
+
+    res.send({
+        newData : newPokemon,
+        data : pokedex
+    })
+})
+
+
+
 app.listen(port, () => console.log("Server running at localhost:3000"));
