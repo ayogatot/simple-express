@@ -7,7 +7,7 @@ const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 let pokedex = {
   nextId: 10,
@@ -78,15 +78,15 @@ app.get("/pokedex", (req, res) => {
 
 // Search Pokemon by id
 
-app.get("/pokedex/:id", (req,res)=>{
-const queryId = req.params.id
+app.get("/pokedex/:id(\\d+)", (req, res) => {
+  const queryId = req.params.id;
 
-const findPokemon = pokedex.data.filter(pokemon => {
-  return pokemon.id === Number(queryId)
-})
+  const findPokemon = pokedex.data.filter(pokemon => {
+    return pokemon.id === Number(queryId);
+  });
 
-res.send({data:findPokemon})
-})
+  res.send({ data: findPokemon });
+});
 
 // Search Pokemon by Name and Type
 
@@ -129,17 +129,16 @@ app.post("/pokedex", (req, res) => {
   });
 });
 
-
 // Delete all pokemon
 
-app.delete("/pokedex",(req , res)=>{
-  const deletePokemon = pokedex.data.splice(0,pokedex.data.length);
+app.delete("/pokedex", (req, res) => {
+  const deletePokemon = pokedex.data.splice(0, pokedex.data.length);
   console.log(deletePokemon);
-  
+
   res.send({
-    data : pokedex.data
-  })
-})
+    data: pokedex.data
+  });
+});
 
 // Delete pokemon by id
 
@@ -160,17 +159,15 @@ app.delete("/pokedex/:id", (req, res) => {
 // Update data pokemon by Id
 
 app.put("/pokedex/:id", (req, res) => {
-
   pokedex.data[req.params.id - 1] = {
     id: req.params.id,
     name: req.body.name,
     type: req.body.type
-  }
-   
-  res.send({
-    data : pokedex.data
-  })
+  };
 
+  res.send({
+    data: pokedex.data
+  });
 });
 
 app.listen(port, () => console.log("Server running at localhost:3000"));
