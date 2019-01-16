@@ -159,11 +159,15 @@ app.delete("/pokedex/:id", (req, res) => {
 // Update data pokemon by Id
 
 app.put("/pokedex/:id", (req, res) => {
-  pokedex.data[req.params.id - 1] = {
-    id: req.params.id,
-    name: req.body.name,
-    type: req.body.type
-  };
+  const updatePokemon = pokedex.data.filter(pokemon => {
+    if (pokemon.id === parseInt(req.params.id)) {
+      return Object.assign(pokemon, req.body);
+    } else {
+      return pokemon;
+    }
+  });
+
+  pokedex.data = updatePokemon;
 
   res.send({
     data: pokedex.data
