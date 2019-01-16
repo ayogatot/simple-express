@@ -6,7 +6,7 @@
 yarn
 ```
 
-## Start server with `node` :
+## Start server with :
 
 ```
 node index.js
