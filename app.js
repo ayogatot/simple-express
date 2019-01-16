@@ -132,16 +132,14 @@ app.post("/pokedex", (req, res) => {
 
 // Delete all pokemon
 
-// app.delete("/pokedex",(req , res)=>{
-//   const deletePokemon = pokedex.data.slice(0, pokedex.data.length);
-//   console.log(deletePokemon);
+app.delete("/pokedex",(req , res)=>{
+  const deletePokemon = pokedex.data.splice(0,pokedex.data.length);
+  console.log(deletePokemon);
   
-//   pokedex.data = deletePokemon;
-
-//   res.send({
-//     data : pokedex.data
-//   })
-// })
+  res.send({
+    data : pokedex.data
+  })
+})
 
 // Delete pokemon by id
 
