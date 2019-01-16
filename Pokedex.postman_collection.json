@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "aa6353e9-9b4e-42ab-b215-388e9200ca60",
+		"name": "Pokedex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All the pokemon",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/pokedex",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokedex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get pokemon  by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/pokedex",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokedex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the pokemon by Name and  Type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/pokedex",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokedex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save new Pokemon",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "gatot",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Water",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/pokedex?",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokedex"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Blastoise",
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": "Water",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Pokemon",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/pokedex",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokedex"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pokemon by id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/pokedex/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokedex",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update pokemon by id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/pokedex/1?name=Charizard&type=Fire",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokedex",
+						"1"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Charizard"
+						},
+						{
+							"key": "type",
+							"value": "Fire"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
